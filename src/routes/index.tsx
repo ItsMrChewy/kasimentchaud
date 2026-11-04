@@ -47,7 +47,7 @@ function Counter({ to }: { to: number }) {
   useEffect(() => {
     const el = ref.current; if (!el) return;
     const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return; io.disconnect();
+      if (!e?.isIntersecting) return; io.disconnect();
       const start = performance.now();
       const tick = (t: number) => { const p = Math.min(1, (t - start) / 1600); setV(Math.round(to * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(tick); };
       requestAnimationFrame(tick);

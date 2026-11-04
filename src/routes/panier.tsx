@@ -69,7 +69,7 @@ function CartPage() {
           <div className="flex justify-between border-t-2 pt-2 text-lg font-bold"><dt>Total</dt><dd>{formatPrice(total + shipping)}</dd></div>
         </dl>
         {shipping > 0 && <p className="mt-2 text-sm text-muted-foreground">Livraison gratuite dès {SHIPPING_FREE_FROM} $.</p>}
-        <form className="mt-6 space-y-3" onSubmit={(e) => { e.preventDefault(); const n = String(new FormData(e.currentTarget).get("name")).split(" ")[0]; clear(); setDone(n); }}>
+        <form className="mt-6 space-y-3" onSubmit={(e) => { e.preventDefault(); const n = String(new FormData(e.currentTarget).get("name")).split(" ")[0] ?? ""; clear(); setDone(n); }}>
           <label className="block"><span className="text-sm font-semibold">Nom complet</span><input name="name" required className={field} /></label>
           <label className="block"><span className="text-sm font-semibold">Courriel</span><input name="email" type="email" required className={field} /></label>
           <label className="block"><span className="text-sm font-semibold">Adresse</span><input name="address" required className={field} /></label>

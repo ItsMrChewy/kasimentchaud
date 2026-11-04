@@ -31,7 +31,7 @@ function ProductPage() {
   const { product } = Route.useLoaderData();
   const { add, lines } = useCart();
   const [view, setView] = useState(0);
-  const [size, setSize] = useState(product.sizes[0]);
+  const [size, setSize] = useState<string>(product.sizes[0] ?? "");
   const inCart = lines.some((l) => l.id === product.id && l.size === size);
 
   return (
