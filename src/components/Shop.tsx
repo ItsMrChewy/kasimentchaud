@@ -23,8 +23,8 @@ export function Shop({ title, intro, fixedCategory }: { title: string; intro: st
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-14">
-      <h1 className="text-5xl">{title}</h1>
-      <p className="mt-3 max-w-xl text-lg">{intro}</p>
+      <h1 className="text-5xl">{fixedCategory ? title : "La vitrine"}</h1>
+      <p className="mt-3 max-w-xl text-lg">{fixedCategory ? intro : "Expositions de nos produits"}</p>
 
       <div className="mt-10 space-y-4 rounded-3xl bg-card p-5 shadow-soft">
         {!fixedCategory && (
