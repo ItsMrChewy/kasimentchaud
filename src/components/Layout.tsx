@@ -12,7 +12,7 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-export function Logo() {
+function Logo() {
   return (
     <Link to="/" className="flex min-w-0 items-center gap-2" aria-label="Cozy Manchot, accueil">
       <Penguin className="h-9 w-9 shrink-0" />

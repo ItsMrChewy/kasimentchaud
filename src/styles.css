@@ -1,8 +1,5 @@
 @import "tailwindcss" source(none);
 @source "../src";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 8px);
@@ -16,22 +13,13 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
-  --color-ring: var(--ring);
   --color-navy: var(--navy);
   --color-beige: var(--beige);
   --color-caramel: var(--caramel);
@@ -53,22 +41,13 @@
   --background: var(--beige);
   --foreground: var(--navy);
   --card: var(--cream);
-  --card-foreground: var(--navy);
-  --popover: var(--cream);
-  --popover-foreground: var(--navy);
   --primary: var(--navy);
   --primary-foreground: var(--beige);
-  --secondary: var(--glacier);
-  --secondary-foreground: var(--navy);
   --muted: #ddcfb6;
   --muted-foreground: color-mix(in oklab, var(--navy) 75%, var(--beige));
   --accent: var(--caramel);
-  --accent-foreground: var(--navy);
-  --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: var(--beige);
   --border: color-mix(in oklab, var(--caramel) 45%, var(--beige));
   --input: color-mix(in oklab, var(--caramel) 50%, var(--beige));
-  --ring: var(--caramel);
   --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--caramel) 45%, transparent);
   --shadow-warm: 0 18px 40px -16px color-mix(in oklab, var(--navy) 35%, transparent);
 }

@@ -8,5 +8,5 @@ export const Route = createFileRoute("/boutique")({
     { property: "og:title", content: "Boutique — Cozy Manchot" },
     { property: "og:description", content: "Hoodies et couvertures upcyclés, pièces uniques." },
   ] }),
-  component: () => <Shop title="La boutique" intro="Chaque pièce est unique. Quand elle part, elle part. Choisis bien (ou vite)." />,
+  component: () => <Shop title="La vitrine" intro="Expositions de nos produits" />,
 });
