@@ -59,8 +59,8 @@ function Contact() {
         ) : (
           <form
             className="mt-8 space-y-4"
-            onSubmit={(e) => {
-              e.preventDefault();
+            onSubmit={(event) => {
+              event.preventDefault();
               setSent(true);
             }}
           >
@@ -96,15 +96,15 @@ function Contact() {
       <section>
         <h2 className="text-4xl">Questions fréquentes</h2>
         <div className="mt-8 space-y-3">
-          {faq.map(([q, a]) => (
-            <details key={q} className="group rounded-3xl bg-card p-5 shadow-soft">
+          {faq.map(([question, answer]) => (
+            <details key={question} className="group rounded-3xl bg-card p-5 shadow-soft">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-bold">
-                {q}
+                {question}
                 <span className="text-2xl text-caramel transition-transform group-open:rotate-45">
                   +
                 </span>
               </summary>
-              <p className="mt-3">{a}</p>
+              <p className="mt-3">{answer}</p>
             </details>
           ))}
         </div>

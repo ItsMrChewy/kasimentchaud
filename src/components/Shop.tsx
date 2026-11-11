@@ -61,14 +61,15 @@ export function Shop({
   const [sort, setSort] = useState("default");
 
   const category = fixedCategory ?? selectedCategory;
-  const catalog = category === "all" ? products : products.filter((p) => p.category === category);
+  const catalog =
+    category === "all" ? products : products.filter((product) => product.category === category);
   const visibleProducts = catalog.filter(
     (product) =>
       (size === "all" || product.sizes.includes(size)) &&
       (color === "all" || product.color === color),
   );
-  if (sort === "asc") visibleProducts.sort((a, b) => a.price - b.price);
-  if (sort === "desc") visibleProducts.sort((a, b) => b.price - a.price);
+  if (sort === "asc") visibleProducts.sort((first, second) => first.price - second.price);
+  if (sort === "desc") visibleProducts.sort((first, second) => second.price - first.price);
 
   function selectCategory(value: CategoryFilter) {
     setSelectedCategory(value);

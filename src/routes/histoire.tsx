@@ -18,7 +18,7 @@ export const Route = createFileRoute("/histoire")({
   component: Story,
 });
 
-const process = [
+const upcyclingSteps = [
   [
     "La chasse",
     "On fait la tournée des friperies : Renaissance, Village des Valeurs, et toutes les petites perles de quartier.",
@@ -69,13 +69,13 @@ function Story() {
       <section className="mx-auto max-w-6xl px-5 pb-16">
         <h2 className="text-4xl">De la friperie à ton divan</h2>
         <ol className="mt-10 grid gap-6 md:grid-cols-2">
-          {process.map(([t, d], i) => (
-            <Reveal key={t} delay={i * 80}>
+          {upcyclingSteps.map(([title, description], stepIndex) => (
+            <Reveal key={title} delay={stepIndex * 80}>
               <li className="flex h-full gap-5 rounded-3xl bg-card p-6 shadow-soft">
-                <span className="font-display text-5xl text-caramel">{i + 1}</span>
+                <span className="font-display text-5xl text-caramel">{stepIndex + 1}</span>
                 <div>
-                  <h3 className="text-2xl">{t}</h3>
-                  <p className="mt-2">{d}</p>
+                  <h3 className="text-2xl">{title}</h3>
+                  <p className="mt-2">{description}</p>
                 </div>
               </li>
             </Reveal>
@@ -85,9 +85,9 @@ function Story() {
       <section className="mx-auto max-w-6xl px-5 pb-20">
         <div className="grid items-center gap-8 rounded-3xl border-2 border-caramel p-8 md:grid-cols-[auto_1fr]">
           <div className="flex justify-center -space-x-4">
-            {["h-20 w-20", "h-24 w-24", "h-20 w-20"].map((c, i) => (
-              <span key={i} className="rounded-full bg-glacier p-2">
-                <Penguin className={c} />
+            {["h-20 w-20", "h-24 w-24", "h-20 w-20"].map((sizeClassName, index) => (
+              <span key={index} className="rounded-full bg-glacier p-2">
+                <Penguin className={sizeClassName} />
               </span>
             ))}
           </div>

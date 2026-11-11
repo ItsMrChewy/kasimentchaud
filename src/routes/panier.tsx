@@ -59,27 +59,27 @@ function CartPage() {
       <div>
         <h1 className="text-5xl">Ton panier</h1>
         <ul className="mt-8 space-y-4">
-          {lines.map((l) => (
+          {lines.map((line) => (
             <li
-              key={l.id + l.size}
+              key={line.id + line.size}
               className="flex items-center gap-4 rounded-3xl bg-card p-3 shadow-soft"
             >
-              <ProductVisual product={l.product} className="h-24 w-20 shrink-0 rounded-2xl" />
+              <ProductVisual product={line.product} className="h-24 w-20 shrink-0 rounded-2xl" />
               <div className="min-w-0 flex-1">
                 <Link
                   to="/produit/$id"
-                  params={{ id: l.id }}
+                  params={{ id: line.id }}
                   className="font-display text-lg font-bold"
                 >
-                  {l.product.name}
+                  {line.product.name}
                 </Link>
-                <p className="text-sm text-muted-foreground">Taille : {l.size} · Pièce unique</p>
+                <p className="text-sm text-muted-foreground">Taille : {line.size} · Pièce unique</p>
               </div>
-              <p className="font-semibold">{formatPrice(l.product.price)}</p>
+              <p className="font-semibold">{formatPrice(line.product.price)}</p>
               <button
-                onClick={() => remove(l.id, l.size)}
+                onClick={() => remove(line.id, line.size)}
                 className="rounded-full p-2 hover:bg-muted"
-                aria-label={`Retirer ${l.product.name}`}
+                aria-label={`Retirer ${line.product.name}`}
               >
                 <Trash2 className="h-5 w-5" />
               </button>
@@ -110,11 +110,12 @@ function CartPage() {
         )}
         <form
           className="mt-6 space-y-3"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const n = String(new FormData(e.currentTarget).get("name")).split(" ")[0] ?? "";
+          onSubmit={(event) => {
+            event.preventDefault();
+            const firstName =
+              String(new FormData(event.currentTarget).get("name")).split(" ")[0] ?? "";
             clear();
-            setDone(n);
+            setDone(firstName);
           }}
         >
           <label className="block">

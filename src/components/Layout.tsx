@@ -4,7 +4,7 @@ import { Menu, ShoppingBag, X, Instagram } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { Penguin } from "./Penguin";
 
-const nav = [
+const navigationLinks = [
   { to: "/boutique", label: "Boutique" },
   { to: "/hoodies", label: "Hoodies" },
   { to: "/couvertures", label: "Couvertures" },
@@ -31,14 +31,14 @@ export function Header() {
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 lg:flex lg:justify-between">
         <Logo />
         <nav className="hidden gap-7 lg:flex" aria-label="Navigation principale">
-          {nav.map((n) => (
+          {navigationLinks.map((link) => (
             <Link
-              key={n.to}
-              to={n.to}
+              key={link.to}
+              to={link.to}
               className="font-medium underline-offset-8 decoration-caramel decoration-2 hover:underline"
               activeProps={{ className: "underline" }}
             >
-              {n.label}
+              {link.label}
             </Link>
           ))}
         </nav>
@@ -70,14 +70,14 @@ export function Header() {
           className="flex flex-col gap-1 border-t px-5 py-4 lg:hidden"
           aria-label="Navigation mobile"
         >
-          {nav.map((n) => (
+          {navigationLinks.map((link) => (
             <Link
-              key={n.to}
-              to={n.to}
+              key={link.to}
+              to={link.to}
               onClick={() => setOpen(false)}
               className="rounded-2xl px-4 py-3 font-medium hover:bg-muted"
             >
-              {n.label}
+              {link.label}
             </Link>
           ))}
         </nav>
@@ -100,10 +100,10 @@ export function Footer() {
           <p className="mt-3 font-display text-2xl text-caramel">Quasiment chaud.</p>
         </div>
         <ul className="grid grid-cols-2 gap-2">
-          {nav.map((n) => (
-            <li key={n.to}>
-              <Link to={n.to} className="hover:text-caramel">
-                {n.label}
+          {navigationLinks.map((link) => (
+            <li key={link.to}>
+              <Link to={link.to} className="hover:text-caramel">
+                {link.label}
               </Link>
             </li>
           ))}

@@ -9,24 +9,28 @@ export function Reveal({
   className?: string;
   delay?: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e?.isIntersecting) {
-          el.classList.add("is-visible");
-          io.disconnect();
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          container.classList.add("is-visible");
+          observer.disconnect();
         }
       },
       { threshold: 0.12 },
     );
-    io.observe(el);
-    return () => io.disconnect();
+    observer.observe(container);
+    return () => observer.disconnect();
   }, []);
   return (
-    <div ref={ref} className={`reveal ${className}`} style={{ animationDelay: `${delay}ms` }}>
+    <div
+      ref={containerRef}
+      className={`reveal ${className}`}
+      style={{ animationDelay: `${delay}ms` }}
+    >
       {children}
     </div>
   );

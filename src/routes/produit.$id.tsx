@@ -38,7 +38,7 @@ function ProductPage() {
   const { add, lines } = useCart();
   const [view, setView] = useState(0);
   const [size, setSize] = useState<string>(product.sizes[0] ?? "");
-  const inCart = lines.some((l) => l.id === product.id && l.size === size);
+  const inCart = lines.some((line) => line.id === product.id && line.size === size);
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-12">
@@ -54,14 +54,18 @@ function ProductPage() {
             <ProductVisual product={product} variant={view} className="aspect-[5/6] w-full" />
           </div>
           <div className="mt-4 grid grid-cols-3 gap-3">
-            {[0, 1, 2].map((v) => (
+            {[0, 1, 2].map((viewIndex) => (
               <button
-                key={v}
-                onClick={() => setView(v)}
-                aria-label={`Vue ${v + 1}`}
-                className={`overflow-hidden rounded-2xl border-4 ${view === v ? "border-caramel" : "border-transparent"}`}
+                key={viewIndex}
+                onClick={() => setView(viewIndex)}
+                aria-label={`Vue ${viewIndex + 1}`}
+                className={`overflow-hidden rounded-2xl border-4 ${view === viewIndex ? "border-caramel" : "border-transparent"}`}
               >
-                <ProductVisual product={product} variant={v} className="aspect-square w-full" />
+                <ProductVisual
+                  product={product}
+                  variant={viewIndex}
+                  className="aspect-square w-full"
+                />
               </button>
             ))}
           </div>
@@ -88,14 +92,14 @@ function ProductPage() {
           <fieldset className="mt-8">
             <legend className="mb-3 font-semibold">Taille</legend>
             <div className="flex flex-wrap gap-2">
-              {product.sizes.map((s) => (
+              {product.sizes.map((availableSize) => (
                 <button
-                  key={s}
-                  onClick={() => setSize(s)}
-                  aria-pressed={size === s}
-                  className={`chip ${size === s ? "border-navy bg-navy text-beige" : "hover:border-caramel"}`}
+                  key={availableSize}
+                  onClick={() => setSize(availableSize)}
+                  aria-pressed={size === availableSize}
+                  className={`chip ${size === availableSize ? "border-navy bg-navy text-beige" : "hover:border-caramel"}`}
                 >
-                  {s}
+                  {availableSize}
                 </button>
               ))}
             </div>
@@ -129,10 +133,10 @@ function ProductPage() {
                 "Coutures vérifiées et renforcées une à une",
                 "Une pièce unique qui évite le dépotoir",
                 "Emballé à la main, sans plastique",
-              ].map((t) => (
-                <li key={t} className="flex gap-2">
+              ].map((benefit) => (
+                <li key={benefit} className="flex gap-2">
                   <Check className="h-5 w-5 shrink-0 text-caramel" />
-                  {t}
+                  {benefit}
                 </li>
               ))}
             </ul>
@@ -142,10 +146,10 @@ function ProductPage() {
       <h2 className="mt-20 text-3xl">Tu pourrais aussi aimer</h2>
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {products
-          .filter((p) => p.id !== product.id)
+          .filter((otherProduct) => otherProduct.id !== product.id)
           .slice(0, 4)
-          .map((p) => (
-            <ProductCard key={p.id} product={p} />
+          .map((recommendedProduct) => (
+            <ProductCard key={recommendedProduct.id} product={recommendedProduct} />
           ))}
       </div>
     </div>

@@ -35,56 +35,56 @@ export const Route = createFileRoute("/")({
 });
 
 const values = [
-  { icon: Recycle, t: "Seconde vie", d: "Chaque pièce vient d'une friperie." },
-  { icon: Sparkles, t: "Pièces uniques", d: "Jamais deux pareilles." },
-  { icon: MapPin, t: "Fait au Québec", d: "Retravaillé à Montréal." },
-  { icon: GraduationCap, t: "Conçu par des jeunes", d: "Une équipe d'étudiants." },
+  { icon: Recycle, title: "Seconde vie", description: "Chaque pièce vient d'une friperie." },
+  { icon: Sparkles, title: "Pièces uniques", description: "Jamais deux pareilles." },
+  { icon: MapPin, title: "Fait au Québec", description: "Retravaillé à Montréal." },
+  { icon: GraduationCap, title: "Conçu par des jeunes", description: "Une équipe d'étudiants." },
 ];
 const steps = [
-  { icon: Search, t: "On déniche en friperie" },
-  { icon: Droplets, t: "On lave et on répare" },
-  { icon: Scissors, t: "On redesign" },
-  { icon: Heart, t: "Tu te câlines dedans" },
+  { icon: Search, title: "On déniche en friperie" },
+  { icon: Droplets, title: "On lave et on répare" },
+  { icon: Scissors, title: "On redesign" },
+  { icon: Heart, title: "Tu te câlines dedans" },
 ];
 const stats = [
   // valeurs fictives, modifiables
-  { n: 1240, s: "vêtements sauvés de la poubelle" },
-  { n: 860, s: "kg de textile détournés" },
-  { n: 512, s: "câlins livrés au Québec" },
+  { amount: 1240, label: "vêtements sauvés de la poubelle" },
+  { amount: 860, label: "kg de textile détournés" },
+  { amount: 512, label: "câlins livrés au Québec" },
 ];
 const reviews = [
-  { q: "Mon hoodie est plus doux que mon chum. Désolée, chéri.", a: "Camille, Québec" },
+  { quote: "Mon hoodie est plus doux que mon chum. Désolée, chéri.", author: "Camille, Québec" },
   {
-    q: "Emballage mignon, pièce parfaite, et je sauve la planète un peu. Gagnant.",
-    a: "Olivier, Sherbrooke",
+    quote: "Emballage mignon, pièce parfaite, et je sauve la planète un peu. Gagnant.",
+    author: "Olivier, Sherbrooke",
   },
   {
-    q: "La Grande Doudou vit sur mon divan maintenant. Elle paie pas de loyer.",
-    a: "Maude, Montréal",
+    quote: "La Grande Doudou vit sur mon divan maintenant. Elle paie pas de loyer.",
+    author: "Maude, Montréal",
   },
 ];
 
-function Counter({ to }: { to: number }) {
-  const [v, setV] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
+function Counter({ target }: { target: number }) {
+  const [displayedValue, setDisplayedValue] = useState(0);
+  const counterRef = useRef<HTMLSpanElement>(null);
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (!e?.isIntersecting) return;
-      io.disconnect();
-      const start = performance.now();
-      const tick = (t: number) => {
-        const p = Math.min(1, (t - start) / 1600);
-        setV(Math.round(to * (1 - Math.pow(1 - p, 3))));
-        if (p < 1) requestAnimationFrame(tick);
+    const counter = counterRef.current;
+    if (!counter) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      observer.disconnect();
+      const startedAt = performance.now();
+      const animate = (frameTime: number) => {
+        const progress = Math.min(1, (frameTime - startedAt) / 1600);
+        setDisplayedValue(Math.round(target * (1 - Math.pow(1 - progress, 3))));
+        if (progress < 1) requestAnimationFrame(animate);
       };
-      requestAnimationFrame(tick);
+      requestAnimationFrame(animate);
     });
-    io.observe(el);
-    return () => io.disconnect();
-  }, [to]);
-  return <span ref={ref}>{v.toLocaleString("fr-CA")}</span>;
+    observer.observe(counter);
+    return () => observer.disconnect();
+  }, [target]);
+  return <span ref={counterRef}>{displayedValue.toLocaleString("fr-CA")}</span>;
 }
 
 function Home() {
@@ -127,12 +127,12 @@ function Home() {
 
       <section className="bg-navy text-beige">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-5 py-10 md:grid-cols-4">
-          {values.map((v) => (
-            <div key={v.t} className="flex items-start gap-3">
-              <v.icon className="h-7 w-7 shrink-0 text-caramel" aria-hidden />
+          {values.map(({ icon: Icon, title, description }) => (
+            <div key={title} className="flex items-start gap-3">
+              <Icon className="h-7 w-7 shrink-0 text-caramel" aria-hidden />
               <div>
-                <p className="font-display font-bold">{v.t}</p>
-                <p className="text-sm opacity-80">{v.d}</p>
+                <p className="font-display font-bold">{title}</p>
+                <p className="text-sm opacity-80">{description}</p>
               </div>
             </div>
           ))}
@@ -150,9 +150,9 @@ function Home() {
           </Link>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {products.slice(0, 4).map((p, i) => (
-            <Reveal key={p.id} delay={i * 80}>
-              <ProductCard product={p} />
+          {products.slice(0, 4).map((product, index) => (
+            <Reveal key={product.id} delay={index * 80}>
+              <ProductCard product={product} />
             </Reveal>
           ))}
         </div>
@@ -162,12 +162,12 @@ function Home() {
         <div className="mx-auto max-w-6xl px-5 py-20">
           <h2 className="text-center text-4xl">Comment ça marche</h2>
           <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s, i) => (
-              <Reveal key={s.t} delay={i * 100}>
+            {steps.map(({ icon: Icon, title }, stepIndex) => (
+              <Reveal key={title} delay={stepIndex * 100}>
                 <li className="h-full rounded-3xl bg-card p-6 shadow-soft">
-                  <span className="font-display text-4xl text-caramel">0{i + 1}</span>
-                  <s.icon className="mt-4 h-8 w-8" aria-hidden />
-                  <p className="mt-3 font-display text-xl font-bold">{s.t}</p>
+                  <span className="font-display text-4xl text-caramel">0{stepIndex + 1}</span>
+                  <Icon className="mt-4 h-8 w-8" aria-hidden />
+                  <p className="mt-3 font-display text-xl font-bold">{title}</p>
                 </li>
               </Reveal>
             ))}
@@ -178,12 +178,12 @@ function Home() {
       <section className="mx-auto max-w-6xl px-5 py-20">
         <h2 className="text-center text-4xl">Notre petit impact</h2>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {stats.map((s) => (
-            <div key={s.s} className="rounded-3xl border-2 border-caramel p-8 text-center">
+          {stats.map(({ amount, label }) => (
+            <div key={label} className="rounded-3xl border-2 border-caramel p-8 text-center">
               <p className="font-display text-6xl font-extrabold">
-                <Counter to={s.n} />
+                <Counter target={amount} />
               </p>
-              <p className="mt-2">{s.s}</p>
+              <p className="mt-2">{label}</p>
             </div>
           ))}
         </div>
@@ -192,12 +192,12 @@ function Home() {
       <section className="mx-auto max-w-6xl px-5 pb-20">
         <h2 className="text-4xl">Ce qu'on dit de nous</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {reviews.map((r, i) => (
-            <Reveal key={r.a} delay={i * 100}>
+          {reviews.map(({ quote, author }, index) => (
+            <Reveal key={author} delay={index * 100}>
               <figure className="h-full rounded-3xl bg-card p-7 shadow-soft">
-                <blockquote className="font-display text-xl leading-snug">« {r.q} »</blockquote>
+                <blockquote className="font-display text-xl leading-snug">« {quote} »</blockquote>
                 <figcaption className="mt-4 text-sm font-semibold text-muted-foreground">
-                  — {r.a}
+                  — {author}
                 </figcaption>
               </figure>
             </Reveal>
@@ -218,8 +218,8 @@ function Home() {
             </p>
           ) : (
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
+              onSubmit={(event) => {
+                event.preventDefault();
                 setSent(true);
               }}
               className="mx-auto mt-6 flex max-w-md flex-col gap-3 sm:flex-row"

@@ -148,5 +148,6 @@ export const products: Product[] = [
   },
 ];
 
-export const getProduct = (id: string) => products.find((p) => p.id === id);
-export const formatPrice = (n: number) => `${n.toFixed(2).replace(".", ",")} $`;
+export const getProduct = (productId: string) =>
+  products.find((product) => product.id === productId);
+export const formatPrice = (amount: number) => `${amount.toFixed(2).replace(".", ",")} $`;
