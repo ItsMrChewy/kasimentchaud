@@ -4,10 +4,19 @@ import { ProductVisual } from "./ProductVisual";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <Link to="/produit/$id" params={{ id: product.id }} className="group block rounded-3xl bg-card p-3 shadow-soft transition-shadow hover:shadow-warm">
+    <Link
+      to="/produit/$id"
+      params={{ id: product.id }}
+      className="group block rounded-3xl bg-card p-3 shadow-soft transition-shadow hover:shadow-warm"
+    >
       <div className="relative overflow-hidden rounded-2xl">
-        <ProductVisual product={product} className="aspect-[5/6] w-full transition-transform duration-500 group-hover:scale-105" />
-        <span className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold ${product.badge === "Dernière pièce" ? "bg-caramel text-navy" : "bg-beige text-navy"}`}>
+        <ProductVisual
+          product={product}
+          className="aspect-[5/6] w-full transition-transform duration-500 group-hover:scale-105"
+        />
+        <span
+          className={`absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold ${product.badge === "Dernière pièce" ? "bg-caramel text-navy" : "bg-beige text-navy"}`}
+        >
           {product.badge}
         </span>
       </div>

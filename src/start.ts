@@ -21,7 +21,7 @@ const errorMiddleware = createMiddleware().server(async ({ next }) => {
 // file opts out, so re-add it explicitly to keep server functions protected
 // from cross-site requests.
 const csrfMiddleware = createCsrfMiddleware({
-  filter: (ctx) => ctx.handlerType === "serverFn",
+  filter: (context) => context.handlerType === "serverFn",
 });
 
 export const startInstance = createStart(() => ({

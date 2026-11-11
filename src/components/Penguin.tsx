@@ -1,4 +1,10 @@
-export function Penguin({ className = "h-10 w-10", scarf = true }: { className?: string; scarf?: boolean }) {
+export function Penguin({
+  className = "h-10 w-10",
+  scarf = true,
+}: {
+  className?: string;
+  scarf?: boolean;
+}) {
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
       <ellipse cx="32" cy="36" rx="20" ry="24" fill="var(--navy)" />

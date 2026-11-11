@@ -1,45 +1,58 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { getProduct, type Product } from "./products";
 
-export interface CartLine { id: string; size: string; qty: number }
-interface CartCtx {
+interface CartLine {
+  id: string;
+  size: string;
+  qty: number;
+}
+interface CartContextValue {
   lines: (CartLine & { product: Product })[];
   count: number;
   total: number;
   add: (id: string, size: string) => void;
   remove: (id: string, size: string) => void;
-  setQty: (id: string, size: string, qty: number) => void;
   clear: () => void;
 }
-const Ctx = createContext<CartCtx | null>(null);
-const KEY = "cozy-manchot-cart";
+const CartContext = createContext<CartContextValue | null>(null);
+const CART_STORAGE_KEY = "cozy-manchot-cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [raw, setRaw] = useState<CartLine[]>([]);
+  const [savedCartLines, setSavedCartLines] = useState<CartLine[]>([]);
   useEffect(() => {
-    try { setRaw(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch { /* vide */ }
+    try {
+      setSavedCartLines(JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || "[]"));
+    } catch {
+      /* vide */
+    }
   }, []);
-  const save = (next: CartLine[]) => { setRaw(next); localStorage.setItem(KEY, JSON.stringify(next)); };
+  const save = (nextCartLines: CartLine[]) => {
+    setSavedCartLines(nextCartLines);
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(nextCartLines));
+  };
 
-  const lines = raw.flatMap((l) => { const product = getProduct(l.id); return product ? [{ ...l, product }] : []; });
-  const value: CartCtx = {
+  const lines = savedCartLines.flatMap((line) => {
+    const product = getProduct(line.id);
+    return product ? [{ ...line, product }] : [];
+  });
+  const value: CartContextValue = {
     lines,
-    count: lines.reduce((s, l) => s + l.qty, 0),
-    total: lines.reduce((s, l) => s + l.qty * l.product.price, 0),
+    count: lines.reduce((count, line) => count + line.qty, 0),
+    total: lines.reduce((subtotal, line) => subtotal + line.qty * line.product.price, 0),
     add: (id, size) => {
-      const found = raw.find((l) => l.id === id && l.size === size);
+      const found = savedCartLines.some((line) => line.id === id && line.size === size);
       // Pièces uniques : une seule par taille
-      if (!found) save([...raw, { id, size, qty: 1 }]);
+      if (!found) save([...savedCartLines, { id, size, qty: 1 }]);
     },
-    remove: (id, size) => save(raw.filter((l) => !(l.id === id && l.size === size))),
-    setQty: (id, size, qty) => save(raw.map((l) => (l.id === id && l.size === size ? { ...l, qty: Math.max(1, qty) } : l))),
+    remove: (id, size) =>
+      save(savedCartLines.filter((line) => !(line.id === id && line.size === size))),
     clear: () => save([]),
   };
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 export function useCart() {
-  const c = useContext(Ctx);
-  if (!c) throw new Error("useCart hors CartProvider");
-  return c;
+  const cart = useContext(CartContext);
+  if (!cart) throw new Error("useCart hors CartProvider");
+  return cart;
 }
