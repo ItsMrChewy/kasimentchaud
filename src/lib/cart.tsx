@@ -1,7 +1,11 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { getProduct, type Product } from "./products";
 
-interface CartLine { id: string; size: string; qty: number }
+interface CartLine {
+  id: string;
+  size: string;
+  qty: number;
+}
 interface CartCtx {
   lines: (CartLine & { product: Product })[];
   count: number;
@@ -16,11 +20,21 @@ const KEY = "cozy-manchot-cart";
 export function CartProvider({ children }: { children: ReactNode }) {
   const [raw, setRaw] = useState<CartLine[]>([]);
   useEffect(() => {
-    try { setRaw(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch { /* vide */ }
+    try {
+      setRaw(JSON.parse(localStorage.getItem(KEY) || "[]"));
+    } catch {
+      /* vide */
+    }
   }, []);
-  const save = (next: CartLine[]) => { setRaw(next); localStorage.setItem(KEY, JSON.stringify(next)); };
+  const save = (next: CartLine[]) => {
+    setRaw(next);
+    localStorage.setItem(KEY, JSON.stringify(next));
+  };
 
-  const lines = raw.flatMap((l) => { const product = getProduct(l.id); return product ? [{ ...l, product }] : []; });
+  const lines = raw.flatMap((l) => {
+    const product = getProduct(l.id);
+    return product ? [{ ...l, product }] : [];
+  });
   const value: CartCtx = {
     lines,
     count: lines.reduce((s, l) => s + l.qty, 0),

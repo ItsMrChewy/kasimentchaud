@@ -121,7 +121,9 @@ export function Shop({
 
       {visibleProducts.length ? (
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {visibleProducts.map((product) => <ProductCard key={product.id} product={product} />)}
+          {visibleProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       ) : (
         <div className="mt-16 text-center">
