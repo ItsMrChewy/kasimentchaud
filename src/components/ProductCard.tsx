@@ -16,7 +16,7 @@ export function ProductCard({ product }: { product: Product }) {
           <h3 className="truncate text-lg">{product.name}</h3>
           <p className="text-sm text-muted-foreground">{product.short}</p>
         </div>
-        <p className="shrink-0 font-semibold">{formatPrice(product.price)}</p>
+        <p className="shrink-0 font-semibold">{"\n"}</p>
       </div>
     </Link>
   );
