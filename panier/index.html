@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="fr-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&amp;display=swap"
+    />
+    <title>Ton panier — Cozy Manchot</title>
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="description" content="Ton panier et ta commande Cozy Manchot." />
+    <meta property="og:title" content="Ton panier — Cozy Manchot" />
+    <meta property="og:description" content="Finalise ta commande de pièces upcyclées." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/site.js"></script>
+  </head>
+  <body data-page="panier">
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    <!-- Header and navigation -->
+    <header class="site-header" id="site-header">
+      <div class="header-layout">
+        <a class="site-logo" aria-label="Cozy Manchot, accueil" href="/"
+          ><svg viewBox="0 0 64 64" class="logo-penguin" aria-hidden="true">
+            <ellipse cx="32" cy="36" rx="20" ry="24" fill="var(--navy)"></ellipse>
+            <ellipse cx="32" cy="40" rx="13" ry="17" fill="var(--beige)"></ellipse>
+            <circle cx="26" cy="26" r="2.4" fill="var(--navy)"></circle>
+            <circle cx="38" cy="26" r="2.4" fill="var(--navy)"></circle>
+            <path d="M29 31 L35 31 L32 35 Z" fill="var(--caramel)"></path>
+            <path d="M16 42 Q32 50 48 42 L48 46 Q32 54 16 46 Z" fill="var(--caramel)"></path>
+            <ellipse cx="24" cy="60" rx="5" ry="2.5" fill="var(--caramel)"></ellipse>
+            <ellipse cx="40" cy="60" rx="5" ry="2.5" fill="var(--caramel)"></ellipse></svg
+          ><span class="logo-name">COZY MANCHOT</span></a
+        >
+        <nav class="desktop-navigation" aria-label="Navigation principale">
+          <a class="navigation-link" href="/boutique/">Boutique</a
+          ><a class="navigation-link" href="/hoodies/">Hoodies</a
+          ><a class="navigation-link" href="/couvertures/">Couvertures</a
+          ><a class="navigation-link" href="/histoire/">Notre histoire</a
+          ><a class="navigation-link" href="/contact/">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <a
+            class="cart-link"
+            aria-label="Panier, 0 article(s)"
+            href="/panier/"
+            aria-current="page"
+            data-cart-link=""
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="cart-icon"
+              aria-hidden="true"
+            >
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+              <path d="M3.103 6.034h17.794"></path>
+              <path
+                d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"
+              ></path></svg
+            ><span class="cart-count" data-cart-count="" hidden="">0</span></a
+          ><button
+            class="menu-toggle"
+            aria-label="Menu"
+            aria-expanded="false"
+            data-menu-toggle=""
+            aria-controls="mobile-navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="menu-icon"
+              aria-hidden="true"
+            >
+              <path d="M4 5h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 19h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav
+        class="mobile-navigation"
+        aria-label="Navigation mobile"
+        id="mobile-navigation"
+        hidden=""
+      >
+        <a href="/boutique/">Boutique</a><a href="/hoodies/">Hoodies</a
+        ><a href="/couvertures/">Couvertures</a><a href="/histoire/">Notre histoire</a
+        ><a href="/contact/">Contact</a>
+      </nav>
+    </header>
+    <!-- Page content -->
+    <main id="main">
+      <div class="empty-state" data-empty-cart="">
+        <svg viewBox="0 0 64 64" class="empty-penguin" aria-hidden="true">
+          <ellipse cx="32" cy="36" rx="20" ry="24" fill="var(--navy)"></ellipse>
+          <ellipse cx="32" cy="40" rx="13" ry="17" fill="var(--beige)"></ellipse>
+          <circle cx="26" cy="26" r="2.4" fill="var(--navy)"></circle>
+          <circle cx="38" cy="26" r="2.4" fill="var(--navy)"></circle>
+          <path d="M29 31 L35 31 L32 35 Z" fill="var(--caramel)"></path>
+          <path d="M16 42 Q32 50 48 42 L48 46 Q32 54 16 46 Z" fill="var(--caramel)"></path>
+          <ellipse cx="24" cy="60" rx="5" ry="2.5" fill="var(--caramel)"></ellipse>
+          <ellipse cx="40" cy="60" rx="5" ry="2.5" fill="var(--caramel)"></ellipse>
+        </svg>
+        <h1 class="empty-state-title">Ton panier a froid</h1>
+        <p class="paragraph-spacing">Il est vide. Mets-y quelque chose de douillet.</p>
+        <a class="button-primary empty-state-button" href="/boutique/">Voir la boutique</a>
+      </div>
+      <div class="cart-page" data-filled-cart="" hidden="">
+        <div>
+          <h1 class="page-title">Ton panier</h1>
+          <ul class="cart-items" data-cart-items="">
+            <li class="cart-item" data-cart-item="">
+              <div class="cart-item-art" data-item-art="">
+                <svg
+                  viewBox="0 0 300 360"
+                  role="img"
+                  aria-label="Motif graphique de Le Petit Banquise"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  <defs>
+                    <pattern
+                      id="p-petit-banquise-0-illustration-4"
+                      width="24"
+                      height="24"
+                      patternUnits="userSpaceOnUse"
+                      patternTransform="rotate(0)"
+                    >
+                      <path
+                        d="M0 12 Q6 6 12 12 T24 12"
+                        stroke="var(--navy)"
+                        stroke-width="3"
+                        fill="none"
+                        opacity=".45"
+                      ></path>
+                    </pattern>
+                  </defs>
+                  <rect width="300" height="360" fill="var(--glacier)"></rect>
+                  <rect
+                    width="300"
+                    height="360"
+                    fill="url(#p-petit-banquise-0-illustration-4)"
+                  ></rect>
+                  <circle cx="230" cy="80" r="70" fill="var(--navy)" opacity=".12"></circle>
+                  <text
+                    x="150"
+                    y="200"
+                    text-anchor="middle"
+                    font-family="Fraunces, serif"
+                    font-weight="800"
+                    font-size="120"
+                    fill="var(--navy)"
+                    opacity=".9"
+                  >
+                    B
+                  </text>
+                </svg>
+              </div>
+              <div class="cart-item-copy">
+                <a class="cart-item-name" href="/produit/petit-banquise/" data-item-name=""
+                  >Le Petit Banquise</a
+                >
+                <p class="muted-caption">
+                  Taille : <span data-item-size="">S</span> · Pièce unique
+                </p>
+              </div>
+              <p class="detail-label" data-item-price="">55,00 $</p>
+              <button
+                class="remove-item"
+                data-remove-item=""
+                type="button"
+                aria-label="Retirer Le Petit Banquise"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M3 6h18M10 11v6M14 11v6"></path>
+                  <path d="M5 6l1 14h12l1-14M9 6V3h6v3"></path>
+                </svg>
+              </button>
+            </li>
+          </ul>
+
+          <p class="cart-error" data-cart-error="" role="status" hidden="">
+            Le panier n'a pas pu être chargé. Réessaie dans un instant.
+          </p>
+        </div>
+        <aside class="cart-summary" data-free-shipping="75" data-shipping-fee="9">
+          <h2 class="card-title">Récapitulatif</h2>
+          <dl class="cart-totals">
+            <div>
+              <dt>Sous-total</dt>
+              <dd data-subtotal="">0,00 $</dd>
+            </div>
+            <div>
+              <dt>Livraison</dt>
+              <dd data-shipping="">Gratuite</dd>
+            </div>
+            <div class="cart-total">
+              <dt>Total</dt>
+              <dd data-total="">0,00 $</dd>
+            </div>
+          </dl>
+          <p class="shipping-note" data-shipping-note="">Livraison gratuite dès 75 $.</p>
+          <form class="checkout-form" data-checkout-form="">
+            <label class="form-field"
+              ><span class="form-label">Nom complet</span
+              ><input name="name" required="" class="form-input"
+            /></label>
+            <label class="form-field"
+              ><span class="form-label">Courriel</span
+              ><input name="email" type="email" required="" class="form-input"
+            /></label>
+            <label class="form-field"
+              ><span class="form-label">Adresse</span
+              ><input name="address" required="" class="form-input"
+            /></label>
+            <div class="address-row">
+              <label class="form-field"
+                ><span class="form-label">Ville</span
+                ><input name="city" required="" class="form-input"
+              /></label>
+              <label class="form-field"
+                ><span class="form-label">Code postal</span
+                ><input name="zip" required="" class="form-input"
+              /></label>
+            </div>
+            <button class="button-primary checkout-button">Passer la commande</button>
+          </form>
+        </aside>
+      </div>
+      <div class="empty-state" data-order-success="" role="status" hidden="">
+        <svg
+          viewBox="0 0 64 64"
+          class="order-penguin"
+          aria-hidden="true"
+          data-tsd-source="/src/components/Penguin.tsx:9:5"
+        >
+          <ellipse
+            cx="32"
+            cy="36"
+            rx="20"
+            ry="24"
+            fill="var(--navy)"
+            data-tsd-source="/src/components/Penguin.tsx:10:7"
+          ></ellipse>
+          <ellipse
+            cx="32"
+            cy="40"
+            rx="13"
+            ry="17"
+            fill="var(--beige)"
+            data-tsd-source="/src/components/Penguin.tsx:11:7"
+          ></ellipse>
+          <circle
+            cx="26"
+            cy="26"
+            r="2.4"
+            fill="var(--navy)"
+            data-tsd-source="/src/components/Penguin.tsx:12:7"
+          ></circle>
+          <circle
+            cx="38"
+            cy="26"
+            r="2.4"
+            fill="var(--navy)"
+            data-tsd-source="/src/components/Penguin.tsx:13:7"
+          ></circle>
+          <path
+            d="M29 31 L35 31 L32 35 Z"
+            fill="var(--caramel)"
+            data-tsd-source="/src/components/Penguin.tsx:14:7"
+          ></path>
+          <path
+            d="M16 42 Q32 50 48 42 L48 46 Q32 54 16 46 Z"
+            fill="var(--caramel)"
+            data-tsd-source="/src/components/Penguin.tsx:15:17"
+          ></path>
+          <ellipse
+            cx="24"
+            cy="60"
+            rx="5"
+            ry="2.5"
+            fill="var(--caramel)"
+            data-tsd-source="/src/components/Penguin.tsx:16:7"
+          ></ellipse>
+          <ellipse
+            cx="40"
+            cy="60"
+            rx="5"
+            ry="2.5"
+            fill="var(--caramel)"
+            data-tsd-source="/src/components/Penguin.tsx:17:7"
+          ></ellipse>
+        </svg>
+        <h1 class="empty-state-title">Merci, <span data-customer-name="">ami</span>!</h1>
+        <p class="team-description">
+          Ta commande est reçue. On l'emballe avec soin et on t'écrit dès qu'elle part. Quasiment
+          chaud… bientôt chez toi.
+        </p>
+        <a href="/boutique/" class="button-primary empty-state-button">Continuer à magasiner</a>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="navy-section" id="site-footer">
+      <div class="footer-layout">
+        <div>
+          <div class="header-actions">
+            <span class="footer-penguin-frame"
+              ><svg viewBox="0 0 64 64" class="footer-penguin" aria-hidden="true">
+                <ellipse cx="32" cy="36" rx="20" ry="24" fill="var(--navy)"></ellipse>
+                <ellipse cx="32" cy="40" rx="13" ry="17" fill="var(--beige)"></ellipse>
+                <circle cx="26" cy="26" r="2.4" fill="var(--navy)"></circle>
+                <circle cx="38" cy="26" r="2.4" fill="var(--navy)"></circle>
+                <path d="M29 31 L35 31 L32 35 Z" fill="var(--caramel)"></path>
+                <path d="M16 42 Q32 50 48 42 L48 46 Q32 54 16 46 Z" fill="var(--caramel)"></path>
+                <ellipse cx="24" cy="60" rx="5" ry="2.5" fill="var(--caramel)"></ellipse>
+                <ellipse
+                  cx="40"
+                  cy="60"
+                  rx="5"
+                  ry="2.5"
+                  fill="var(--caramel)"
+                ></ellipse></svg></span
+            ><span class="footer-brand">COZY MANCHOT</span>
+          </div>
+          <p class="footer-tagline">Quasiment chaud.</p>
+        </div>
+        <ul class="footer-navigation">
+          <li><a class="footer-link" href="/boutique/">Boutique</a></li>
+          <li><a class="footer-link" href="/hoodies/">Hoodies</a></li>
+          <li><a class="footer-link" href="/couvertures/">Couvertures</a></li>
+          <li><a class="footer-link" href="/histoire/">Notre histoire</a></li>
+          <li><a class="footer-link" href="/contact/">Contact</a></li>
+          <li><a class="footer-link" href="/panier/" aria-current="page">Panier</a></li>
+        </ul>
+        <div class="footer-details">
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" class="social-link"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="instagram-icon"
+                aria-hidden="true"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+              </svg>
+              Instagram</a
+            ><a href="https://tiktok.com" target="_blank" rel="noreferrer" class="social-link"
+              >TikTok</a
+            >
+          </div>
+          <p>Fait avec ❤️ à Montréal</p>
+          <p class="copyright">© <span data-year="">2026</span> Cozy Manchot</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

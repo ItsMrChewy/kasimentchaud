@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="fr-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&amp;display=swap"
+    />
+    <title>Boutique — Cozy Manchot</title>
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="description"
+      content="Tous nos hoodies et couvertures upcyclés, pièces uniques en $ CAD."
+    />
+    <meta property="og:title" content="Boutique — Cozy Manchot" />
+    <meta property="og:description" content="Hoodies et couvertures upcyclés, pièces uniques." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/site.js"></script>
+  </head>
+  <body data-page="boutique">
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    <!-- Header and navigation -->
+    <header class="site-header" id="site-header">
+      <div class="header-layout">
+        <a class="site-logo" aria-label="Cozy Manchot, accueil" href="/"
+          ><svg viewBox="0 0 64 64" class="logo-penguin" aria-hidden="true">
+            <ellipse cx="32" cy="36" rx="20" ry="24" fill="var(--navy)"></ellipse>
+            <ellipse cx="32" cy="40" rx="13" ry="17" fill="var(--beige)"></ellipse>
+            <circle cx="26" cy="26" r="2.4" fill="var(--navy)"></circle>
+            <circle cx="38" cy="26" r="2.4" fill="var(--navy)"></circle>
+            <path d="M29 31 L35 31 L32 35 Z" fill="var(--caramel)"></path>
+            <path d="M16 42 Q32 50 48 42 L48 46 Q32 54 16 46 Z" fill="var(--caramel)"></path>
+            <ellipse cx="24" cy="60" rx="5" ry="2.5" fill="var(--caramel)"></ellipse>
+            <ellipse cx="40" cy="60" rx="5" ry="2.5" fill="var(--caramel)"></ellipse></svg
+          ><span class="logo-name">COZY MANCHOT</span></a
+        >
+        <nav class="desktop-navigation" aria-label="Navigation principale">
+          <a class="navigation-link active-navigation-link" href="/boutique/" aria-current="page"
+            >Boutique</a
+          ><a class="navigation-link" href="/hoodies/">Hoodies</a
+          ><a class="navigation-link" href="/couvertures/">Couvertures</a
+          ><a class="navigation-link" href="/histoire/">Notre histoire</a
+          ><a class="navigation-link" href="/contact/">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <a class="cart-link" aria-label="Panier, 0 article(s)" href="/panier/" data-cart-link=""
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="cart-icon"
+              aria-hidden="true"
+            >
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+              <path d="M3.103 6.034h17.794"></path>
+              <path
+                d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"
+              ></path></svg
+            ><span class="cart-count" data-cart-count="" hidden="">0</span></a
+          ><button
+            class="menu-toggle"
+            aria-label="Menu"
+            aria-expanded="false"
+            data-menu-toggle=""
+            aria-controls="mobile-navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="menu-icon"
+              aria-hidden="true"
+            >
+              <path d="M4 5h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 19h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav
+        class="mobile-navigation"
+        aria-label="Navigation mobile"
+        id="mobile-navigation"
+        hidden=""
+      >
+        <a href="/boutique/">Boutique</a><a href="/hoodies/">Hoodies</a
+        ><a href="/couvertures/">Couvertures</a><a href="/histoire/">Notre histoire</a
+        ><a href="/contact/">Contact</a>
+      </nav>
+    </header>
+    <!-- Page content -->
+    <main id="main">
+      <div class="shop-page" data-shop="" data-category="all">
+        <h1 class="page-title">La vitrine</h1>
+        <p class="page-intro">Expositions de nos produits</p>
+        <div class="shop-filters">
+          <div class="filter-row" data-filter="category">
+            <span class="filter-label">Catégorie</span
+            ><button class="filter-chip" aria-pressed="true" data-value="all">Tout</button
+            ><button class="filter-chip" aria-pressed="false" data-value="hoodies">Hoodies</button
+            ><button class="filter-chip" aria-pressed="false" data-value="couvertures">
+              Couvertures
+            </button>
+          </div>
+          <div class="filter-row" data-filter="size">
+            <span class="filter-label">Taille</span
+            ><button class="filter-chip" aria-pressed="true" data-value="all">Toutes</button
+            ><button class="filter-chip" aria-pressed="false" data-value="S">S</button
+            ><button class="filter-chip" aria-pressed="false" data-value="M">M</button
+            ><button class="filter-chip" aria-pressed="false" data-value="L">L</button
+            ><button class="filter-chip" aria-pressed="false" data-value="XL">XL</button
+            ><button class="filter-chip" aria-pressed="false" data-value="XS">XS</button
+            ><button class="filter-chip" aria-pressed="false" data-value="Grand format">
+              Grand format</button
+            ><button class="filter-chip" aria-pressed="false" data-value="Format moyen">
+              Format moyen</button
+            ><button class="filter-chip" aria-pressed="false" data-value="Petit format">
+              Petit format
+            </button>
+          </div>
+          <div class="filter-row" data-filter="color">
+            <span class="filter-label">Couleur</span
+            ><button class="filter-chip" aria-pressed="true" data-value="all">Toutes</button
+            ><button class="filter-chip" aria-pressed="false" data-value="Bleu">Bleu</button
+            ><button class="filter-chip" aria-pressed="false" data-value="Brun">Brun</button
+            ><button class="filter-chip" aria-pressed="false" data-value="Marine">Marine</button
+            ><button class="filter-chip" aria-pressed="false" data-value="Beige">Beige</button>
+          </div>
+          <div class="header-actions">
+            <label for="sort" class="filter-label">Trier</label
+            ><select id="sort" class="sort-select" data-sort="">
+              <option value="default" selected="">Nos coups de cœur</option>
+              <option value="asc">Prix croissant</option>
+              <option value="desc">Prix décroissant</option>
+            </select>
+          </div>
+        </div>
+        <div class="shop-grid" data-products="">
+          <a
+            class="product-card"
+            href="/produit/petit-banquise/"
+            data-product-card=""
+            data-product-id="petit-banquise"
+            data-category="hoodies"
+            data-sizes="S|M"
+            data-color="Bleu"
+            data-price="55"
+            ><div class="product-card-art">
+              <svg
+                viewBox="0 0 300 360"
+                class="product-card-image"
+                role="img"
+                aria-label="Motif graphique de Le Petit Banquise"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <defs>
+                  <pattern
+                    id="p-petit-banquise-0-illustration-4"
+                    width="24"
+                    height="24"
+                    patternUnits="userSpaceOnUse"
+                    patternTransform="rotate(0)"
+                  >
+                    <path
+                      d="M0 12 Q6 6 12 12 T24 12"
+                      stroke="var(--navy)"
+                      stroke-width="3"
+                      fill="none"
+                      opacity=".45"
+                    ></path>
+                  </pattern>
+                </defs>
+                <rect width="300" height="360" fill="var(--glacier)"></rect>
+                <rect
+                  width="300"
+                  height="360"
+                  fill="url(#p-petit-banquise-0-illustration-4)"
+                ></rect>
+                <circle cx="230" cy="80" r="70" fill="var(--navy)" opacity=".12"></circle>
+                <text
+                  x="150"
+                  y="200"
+                  text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-weight="800"
+                  font-size="120"
+                  fill="var(--navy)"
+                  opacity=".9"
+                >
+                  B
+                </text></svg
+              ><span class="product-badge">Pièce unique</span>
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-copy">
+                <h3 class="product-card-title">Le Petit Banquise</h3>
+                <p class="muted-caption">Doux comme une première neige.</p>
+              </div>
+            </div></a
+          ><a
+            class="product-card"
+            href="/produit/calin-caramel/"
+            data-product-card=""
+            data-product-id="calin-caramel"
+            data-category="hoodies"
+            data-sizes="M|L"
+            data-color="Brun"
+            data-price="62"
+            ><div class="product-card-art">
+              <svg
+                viewBox="0 0 300 360"
+                class="product-card-image"
+                role="img"
+                aria-label="Motif graphique de Le Câlin Caramel"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <defs>
+                  <pattern
+                    id="p-calin-caramel-0-illustration-5"
+                    width="24"
+                    height="24"
+                    patternUnits="userSpaceOnUse"
+                    patternTransform="rotate(0)"
+                  >
+                    <rect width="24" height="8" fill="var(--beige)" opacity=".35"></rect>
+                  </pattern>
+                </defs>
+                <rect width="300" height="360" fill="var(--caramel)"></rect>
+                <rect width="300" height="360" fill="url(#p-calin-caramel-0-illustration-5)"></rect>
+                <circle cx="230" cy="80" r="70" fill="var(--beige)" opacity=".12"></circle>
+                <text
+                  x="150"
+                  y="200"
+                  text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-weight="800"
+                  font-size="120"
+                  fill="var(--beige)"
+                  opacity=".9"
+                >
+                  C
+                </text></svg
+              ><span class="product-badge">Pièce unique</span>
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-copy">
+                <h3 class="product-card-title">Le Câlin Caramel</h3>
+                <p class="muted-caption">Chaud comme un chocolat chaud.</p>
+              </div>
+            </div></a
+          ><a
+            class="product-card"
+            href="/produit/capitaine-marine/"
+            data-product-card=""
+            data-product-id="capitaine-marine"
+            data-category="hoodies"
+            data-sizes="L|XL"
+            data-color="Marine"
+            data-price="68"
+            ><div class="product-card-art">
+              <svg
+                viewBox="0 0 300 360"
+                class="product-card-image"
+                role="img"
+                aria-label="Motif graphique de Le Capitaine Marine"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <defs>
+                  <pattern
+                    id="p-capitaine-marine-0-illustration-6"
+                    width="24"
+                    height="24"
+                    patternUnits="userSpaceOnUse"
+                    patternTransform="rotate(0)"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="3.4285714285714284"
+                      fill="var(--beige)"
+                      opacity=".4"
+                    ></circle>
+                  </pattern>
+                </defs>
+                <rect width="300" height="360" fill="var(--navy)"></rect>
+                <rect
+                  width="300"
+                  height="360"
+                  fill="url(#p-capitaine-marine-0-illustration-6)"
+                ></rect>
+                <circle cx="230" cy="80" r="70" fill="var(--beige)" opacity=".12"></circle>
+                <text
+                  x="150"
+                  y="200"
+                  text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-weight="800"
+                  font-size="120"
+                  fill="var(--beige)"
+                  opacity=".9"
+                >
+                  M
+                </text></svg
+              ><span class="product-badge last-piece-badge">Dernière pièce</span>
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-copy">
+                <h3 class="product-card-title">Le Capitaine Marine</h3>
+                <p class="muted-caption">Pour les longues soirées d'hiver.</p>
+              </div>
+            </div></a
+          ><a
+            class="product-card"
+            href="/produit/petit-flocon/"
+            data-product-card=""
+            data-product-id="petit-flocon"
+            data-category="hoodies"
+            data-sizes="XS|S"
+            data-color="Beige"
+            data-price="45"
+            ><div class="product-card-art">
+              <svg
+                viewBox="0 0 300 360"
+                class="product-card-image"
+                role="img"
+                aria-label="Motif graphique de Le Petit Flocon"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <defs>
+                  <pattern
+                    id="p-petit-flocon-0-illustration-7"
+                    width="24"
+                    height="24"
+                    patternUnits="userSpaceOnUse"
+                    patternTransform="rotate(0)"
+                  >
+                    <rect width="12" height="12" fill="var(--caramel)" opacity=".25"></rect>
+                    <rect
+                      x="12"
+                      y="12"
+                      width="12"
+                      height="12"
+                      fill="var(--caramel)"
+                      opacity=".25"
+                    ></rect>
+                  </pattern>
+                </defs>
+                <rect width="300" height="360" fill="var(--cream)"></rect>
+                <rect width="300" height="360" fill="url(#p-petit-flocon-0-illustration-7)"></rect>
+                <circle cx="230" cy="80" r="70" fill="var(--caramel)" opacity=".12"></circle>
+                <text
+                  x="150"
+                  y="200"
+                  text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-weight="800"
+                  font-size="120"
+                  fill="var(--caramel)"
+                  opacity=".9"
+                >
+                  F
+                </text></svg
+              ><span class="product-badge">Pièce unique</span>
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-copy">
+                <h3 class="product-card-title">Le Petit Flocon</h3>
+                <p class="muted-caption">Léger, mais pas trop.</p>
+              </div>
+            </div></a
+          ><a
+            class="product-card"
+            href="/produit/toque-tempete/"
+            data-product-card=""
+            data-product-id="toque-tempete"
+            data-category="hoodies"
+            data-sizes="M|L|XL"
+            data-color="Bleu"
+            data-price="72"
+            ><div class="product-card-art">
+              <svg
+                viewBox="0 0 300 360"
+                class="product-card-image"
+                role="img"
+                aria-label="Motif graphique de Le Toque Tempête"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <defs>
+                  <pattern
+                    id="p-toque-tempete-0-illustration-8"
+                    width="24"
+                    height="24"
+                    patternUnits="userSpaceOnUse"
+                    patternTransform="rotate(0)"
+                  >
+                    <path
+                      d="M0 16.799999999999997 L12 7.199999999999999 L24 16.799999999999997"
+                      stroke="var(--navy)"
+                      stroke-width="3"
+                      fill="none"
+                      opacity=".45"
+                    ></path>
+                  </pattern>
+                </defs>
+                <rect width="300" height="360" fill="var(--glacier)"></rect>
+                <rect width="300" height="360" fill="url(#p-toque-tempete-0-illustration-8)"></rect>
+                <circle cx="230" cy="80" r="70" fill="var(--navy)" opacity=".12"></circle>
+                <text
+                  x="150"
+                  y="200"
+                  text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-weight="800"
+                  font-size="120"
+                  fill="var(--navy)"
+                  opacity=".9"
+                >
+                  T
+                </text></svg
+              ><span class="product-badge">Pièce unique</span>
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-copy">
+                <h3 class="product-card-title">Le Toque Tempête</h3>
+                <p class="muted-caption">Pour braver la poudrerie.</p>
+              </div>
+            </div></a
+          ><a
+            class="product-card"
+            href="/produit/grande-doudou/"
+            data-product-card=""
+            data-product-id="grande-doudou"
+            data-category="couvertures"
+            data-sizes="Grand format"
+            data-color="Brun"
+            data-price="85"
+            ><div class="product-card-art">
+              <svg
+                viewBox="0 0 300 360"
+                class="product-card-image"
+                role="img"
+                aria-label="Motif graphique de La Grande Doudou"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <defs>
+                  <pattern
+                    id="p-grande-doudou-0-illustration-9"
+                    width="24"
+                    height="24"
+                    patternUnits="userSpaceOnUse"
+                    patternTransform="rotate(0)"
+                  >
+                    <rect width="12" height="12" fill="var(--beige)" opacity=".25"></rect>
+                    <rect
+                      x="12"
+                      y="12"
+                      width="12"
+                      height="12"
+                      fill="var(--beige)"
+                      opacity=".25"
+                    ></rect>
+                  </pattern>
+                </defs>
+                <rect width="300" height="360" fill="var(--caramel)"></rect>
+                <rect width="300" height="360" fill="url(#p-grande-doudou-0-illustration-9)"></rect>
+                <circle cx="230" cy="80" r="70" fill="var(--beige)" opacity=".12"></circle>
+                <text
+                  x="150"
+                  y="200"
+                  text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-weight="800"
+                  font-size="120"
+                  fill="var(--beige)"
+                  opacity=".9"
+                >
+                  D
+                </text></svg
+              ><span class="product-badge">Pièce unique</span>
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-copy">
+                <h3 class="product-card-title">La Grande Doudou</h3>
+                <p class="muted-caption">Assez grande pour deux (ou un chat).</p>
+              </div>
+            </div></a
+          ><a
+            class="product-card"
+            href="/produit/nuit-polaire/"
+            data-product-card=""
+            data-product-id="nuit-polaire"
+            data-category="couvertures"
+            data-sizes="Format moyen"
+            data-color="Marine"
+            data-price="58"
+            ><div class="product-card-art">
+              <svg
+                viewBox="0 0 300 360"
+                class="product-card-image"
+                role="img"
+                aria-label="Motif graphique de La Nuit Polaire"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <defs>
+                  <pattern
+                    id="p-nuit-polaire-0-illustration-10"
+                    width="24"
+                    height="24"
+                    patternUnits="userSpaceOnUse"
+                    patternTransform="rotate(0)"
+                  >
+                    <path
+                      d="M0 12 Q6 6 12 12 T24 12"
+                      stroke="var(--beige)"
+                      stroke-width="3"
+                      fill="none"
+                      opacity=".45"
+                    ></path>
+                  </pattern>
+                </defs>
+                <rect width="300" height="360" fill="var(--navy)"></rect>
+                <rect width="300" height="360" fill="url(#p-nuit-polaire-0-illustration-10)"></rect>
+                <circle cx="230" cy="80" r="70" fill="var(--beige)" opacity=".12"></circle>
+                <text
+                  x="150"
+                  y="200"
+                  text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-weight="800"
+                  font-size="120"
+                  fill="var(--beige)"
+                  opacity=".9"
+                >
+                  P
+                </text></svg
+              ><span class="product-badge last-piece-badge">Dernière pièce</span>
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-copy">
+                <h3 class="product-card-title">La Nuit Polaire</h3>
+                <p class="muted-caption">Pour les films de dimanche.</p>
+              </div>
+            </div></a
+          ><a
+            class="product-card"
+            href="/produit/petite-guimauve/"
+            data-product-card=""
+            data-product-id="petite-guimauve"
+            data-category="couvertures"
+            data-sizes="Petit format"
+            data-color="Beige"
+            data-price="35"
+            ><div class="product-card-art">
+              <svg
+                viewBox="0 0 300 360"
+                class="product-card-image"
+                role="img"
+                aria-label="Motif graphique de La Petite Guimauve"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                <defs>
+                  <pattern
+                    id="p-petite-guimauve-0-illustration-11"
+                    width="24"
+                    height="24"
+                    patternUnits="userSpaceOnUse"
+                    patternTransform="rotate(0)"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="3.4285714285714284"
+                      fill="var(--caramel)"
+                      opacity=".4"
+                    ></circle>
+                  </pattern>
+                </defs>
+                <rect width="300" height="360" fill="var(--cream)"></rect>
+                <rect
+                  width="300"
+                  height="360"
+                  fill="url(#p-petite-guimauve-0-illustration-11)"
+                ></rect>
+                <circle cx="230" cy="80" r="70" fill="var(--caramel)" opacity=".12"></circle>
+                <text
+                  x="150"
+                  y="200"
+                  text-anchor="middle"
+                  font-family="Fraunces, serif"
+                  font-weight="800"
+                  font-size="120"
+                  fill="var(--caramel)"
+                  opacity=".9"
+                >
+                  G
+                </text></svg
+              ><span class="product-badge">Pièce unique</span>
+            </div>
+            <div class="product-card-info">
+              <div class="product-card-copy">
+                <h3 class="product-card-title">La Petite Guimauve</h3>
+                <p class="muted-caption">Format genoux, câlin garanti.</p>
+              </div>
+            </div></a
+          >
+        </div>
+        <div class="shop-empty" data-shop-empty="" hidden="">
+          <svg
+            viewBox="0 0 64 64"
+            class="shop-empty-penguin"
+            aria-hidden="true"
+            data-tsd-source="/src/components/Penguin.tsx:9:5"
+          >
+            <ellipse
+              cx="32"
+              cy="36"
+              rx="20"
+              ry="24"
+              fill="var(--navy)"
+              data-tsd-source="/src/components/Penguin.tsx:10:7"
+            ></ellipse>
+            <ellipse
+              cx="32"
+              cy="40"
+              rx="13"
+              ry="17"
+              fill="var(--beige)"
+              data-tsd-source="/src/components/Penguin.tsx:11:7"
+            ></ellipse>
+            <circle
+              cx="26"
+              cy="26"
+              r="2.4"
+              fill="var(--navy)"
+              data-tsd-source="/src/components/Penguin.tsx:12:7"
+            ></circle>
+            <circle
+              cx="38"
+              cy="26"
+              r="2.4"
+              fill="var(--navy)"
+              data-tsd-source="/src/components/Penguin.tsx:13:7"
+            ></circle>
+            <path
+              d="M29 31 L35 31 L32 35 Z"
+              fill="var(--caramel)"
+              data-tsd-source="/src/components/Penguin.tsx:14:7"
+            ></path>
+            <path
+              d="M16 42 Q32 50 48 42 L48 46 Q32 54 16 46 Z"
+              fill="var(--caramel)"
+              data-tsd-source="/src/components/Penguin.tsx:15:17"
+            ></path>
+            <ellipse
+              cx="24"
+              cy="60"
+              rx="5"
+              ry="2.5"
+              fill="var(--caramel)"
+              data-tsd-source="/src/components/Penguin.tsx:16:7"
+            ></ellipse>
+            <ellipse
+              cx="40"
+              cy="60"
+              rx="5"
+              ry="2.5"
+              fill="var(--caramel)"
+              data-tsd-source="/src/components/Penguin.tsx:17:7"
+            ></ellipse>
+          </svg>
+          <p class="shop-empty-title">Rien ici… pour l'instant!</p>
+          <p>Essaie un autre filtre.</p>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="navy-section" id="site-footer">
+      <div class="footer-layout">
+        <div>
+          <div class="header-actions">
+            <span class="footer-penguin-frame"
+              ><svg viewBox="0 0 64 64" class="footer-penguin" aria-hidden="true">
+                <ellipse cx="32" cy="36" rx="20" ry="24" fill="var(--navy)"></ellipse>
+                <ellipse cx="32" cy="40" rx="13" ry="17" fill="var(--beige)"></ellipse>
+                <circle cx="26" cy="26" r="2.4" fill="var(--navy)"></circle>
+                <circle cx="38" cy="26" r="2.4" fill="var(--navy)"></circle>
+                <path d="M29 31 L35 31 L32 35 Z" fill="var(--caramel)"></path>
+                <path d="M16 42 Q32 50 48 42 L48 46 Q32 54 16 46 Z" fill="var(--caramel)"></path>
+                <ellipse cx="24" cy="60" rx="5" ry="2.5" fill="var(--caramel)"></ellipse>
+                <ellipse
+                  cx="40"
+                  cy="60"
+                  rx="5"
+                  ry="2.5"
+                  fill="var(--caramel)"
+                ></ellipse></svg></span
+            ><span class="footer-brand">COZY MANCHOT</span>
+          </div>
+          <p class="footer-tagline">Quasiment chaud.</p>
+        </div>
+        <ul class="footer-navigation">
+          <li><a class="footer-link" href="/boutique/" aria-current="page">Boutique</a></li>
+          <li><a class="footer-link" href="/hoodies/">Hoodies</a></li>
+          <li><a class="footer-link" href="/couvertures/">Couvertures</a></li>
+          <li><a class="footer-link" href="/histoire/">Notre histoire</a></li>
+          <li><a class="footer-link" href="/contact/">Contact</a></li>
+          <li><a class="footer-link" href="/panier/">Panier</a></li>
+        </ul>
+        <div class="footer-details">
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" class="social-link"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="instagram-icon"
+                aria-hidden="true"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+              </svg>
+              Instagram</a
+            ><a href="https://tiktok.com" target="_blank" rel="noreferrer" class="social-link"
+              >TikTok</a
+            >
+          </div>
+          <p>Fait avec ❤️ à Montréal</p>
+          <p class="copyright">© <span data-year="">2026</span> Cozy Manchot</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
