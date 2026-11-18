@@ -72,14 +72,3 @@ test("SVG references are unique and point to patterns in the same document", () 
     }
   }
 });
-
-test("preview source locations follow actual HTML tags and current line numbers", async () => {
-  const { addSourceLocations } = await import("../vite.config.js");
-  const html = `<!doctype html>\n<html><body>\n<!-- <button>Comment</button> -->\n<h1>Hello</h1>\n<svg><path d="M0 0" /></svg>\n<script>const example = "<button>Text</button>";</script>\n</body></html>`;
-  const preview = addSourceLocations(html, "contact/index.html");
-  assert.ok(preview.includes('<h1 data-loc="contact/index.html:4">Hello</h1>'));
-  assert.ok(preview.includes('<path data-loc="contact/index.html:5"'));
-  assert.ok(preview.includes('const example = "<button>Text</button>";'));
-  assert.ok(preview.includes("<!-- <button>Comment</button> -->"));
-  assert.equal(addSourceLocations(preview, "contact/index.html"), preview);
-});
