@@ -20,7 +20,11 @@ Move, duplicate, or edit HTML directly inside that page. SVG illustrations are i
 
 Products have readable `data-product-id`, `data-price`, `data-category`, `data-color`, and `data-sizes` attributes. Update the price text and its `data-price` value together. Keep the shop cards in sync with the product page. The tests flag inconsistent catalog attributes.
 
-## Builder.io Code / Projects
+## Visual editing
+
+For a visual editor that works directly with these plain HTML and CSS files, open this folder as a project in [Pinegrow Web Editor](https://pinegrow.com/docs/getting-started/how-to-edit-your-existing-website-with-pinegrow/). The source files remain the website: there is no CMS content model or component conversion to maintain. Review and commit the edited files with Git as usual.
+
+### Builder.io Code / Projects
 
 Use this GitHub branch in the existing Builder Code project.
 
@@ -33,11 +37,13 @@ Use this GitHub branch in the existing Builder Code project.
 - Static output directory — `dist`
 - Design mode selector — `body`
 
-Use Design mode to select and style the native HTML elements. Use Interact mode to open the menu, change filters, or switch product artwork. This is a Builder Code project, so saving visual changes updates these source files.
+The isolated [Cozy Manchot — Plain HTML branch](https://builder.io/app/projects/b8b0b6b44b514d6bb7b1/circular-brain-1qmdoiff) loads this site in Builder's preview. Use Interact mode to open the menu, change filters, or switch product artwork. Code mode exposes the complete HTML pages.
+
+Visual editing is not verified: Builder reported “No Editable Elements Found,” and its Style tab did not select native HTML elements during testing. A development-only source-location mapping experiment did not resolve selection and was removed. Do not assume that preview support means Design mode can save changes to these HTML files. The existing project's default Git branch remains `main`.
 
 Append `?edit=1` to a page's preview URL to show conditional content such as form confirmations, open FAQ answers, and cart states. On the cart page this displays a sample item without saving it. This makes the HTML available to select while designing. Reopen the regular URL to test normal behavior.
 
-An authenticated Builder project is needed to verify visual saves inside Builder. The source contains no Builder Content CMS integration or account credentials.
+The source contains no Builder Content CMS integration or account credentials.
 
 ## Local development
 
